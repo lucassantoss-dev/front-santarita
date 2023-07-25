@@ -1,0 +1,53 @@
+<div class="bg-light">
+  <main>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-5">
+          <div class="card shadow-lg border-0 rounded-lg mt-5">
+            <div class="card-header">
+              <h3 class="text-center font-weight-light my-4">
+                Entrar
+              </h3>
+            </div>
+            <div class="card-body">
+              <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                  <label class="small mb-1">Login</label>
+                  <input
+                    type="text"
+                    formControlName="name"
+                    [(ngModel)]="requestLogin.name"
+                    class="form-control py-4"
+                    placeholder="Digite seu login"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="small mb-1">Senha</label>
+                  <input
+                    type="password"
+                    formControlName="password"
+                    [(ngModel)]="requestLogin.password"
+                    class="form-control py-4"
+                    placeholder="Digite sua Senha"
+                  />
+                </div>
+
+                <div
+                  class="
+                    form-group
+                    aling-items-center
+                    justify-content-between
+                    mt-4
+                    mb-0
+                  "
+                >
+                  <button type="submit" class="btn btn-primary">Entrar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

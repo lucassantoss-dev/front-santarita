@@ -1,0 +1,135 @@
+<h1 class="breadcrumb mt-4">Adicionar Novo Falecido</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item active">
+    {{ socio.id ? "Edição" : "Cadastro" }}
+  </li>
+</ol>
+
+<div class="container addSocio">
+  <form (ngSubmit)="salvar()" [formGroup]="socioForm">
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Nome: </mat-label>
+          <input
+            matInput
+            required
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="socio.nome"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>CPF: *</mat-label>
+          <input
+            matInput
+            required
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="socio.CPF"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>CEP: </mat-label>
+          <input
+            matInput
+            required
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="socio.CEP"
+            placeholder="63700-000"
+            mask="00000-000"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Logradouro: </mat-label>
+          <input
+            matInput
+            required
+            type="text"
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="socio.endereco"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Cidade: *</mat-label>
+          <input
+            matInput
+            required
+            type="text"
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="socio.cidade"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Bairro: </mat-label>
+          <input
+            matInput
+            required
+            type="text"
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="socio.bairro"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Estado: *</mat-label>
+          <input
+            matInput
+            required
+            type="text"
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="socio.estado"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Contato: </mat-label>
+          <input
+            matInput
+            required
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="socio.contato"
+            placeholder="(88) 99999-9999"
+            mask="(00) 00000-0000"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          *ngIf="!socio.id"
+        >
+          <i class="fa fa-save"></i> Salvar
+        </button>
+        <button type="submit" class="btn btn-primary" *ngIf="socio.id">
+          <i class="fa fa-sync-alt"></i> Atualizar
+        </button>
+        <button type="button" class="btn btn-danger" routerLink="/socios-lista">
+          <i class="fa fa-arrow-alt-circle-left"></i> Voltar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

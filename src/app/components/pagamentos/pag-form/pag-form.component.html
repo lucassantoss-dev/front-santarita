@@ -1,0 +1,50 @@
+<h1 class="breadcrumb mt-4">Adicionar Novo Pagamento</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">
+        {{ pagamentos.id ? "Edição" : "Cadastro" }}
+    </li>
+</ol>
+
+<div class="container addSocio">
+    <form (ngSubmit)="salvar()" [formGroup]="pagForm">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>Valor: </mat-label>
+                    <input matInput required prefix="$" />
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>Nome do Socio: </mat-label>
+                    <mat-select matInput required [ngModelOptions]="{ standalone: true }"
+                    [(ngModel)]="pagamentos.socios_id">
+                        <mat-option *ngFor="let socio of socios" [value]="socio.id">
+                            {{ socio.nome }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>Vencimento: *</mat-label>
+                    <input matInput required type="date" />
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-primary" *ngIf="!pagamentos.id">
+                    <i class="fa fa-save"></i> Salvar
+                </button>
+                <button type="submit" class="btn btn-primary" *ngIf="pagamentos.id">
+                    <i class="fa fa-sync-alt"></i> Atualizar
+                </button>
+                <button type="button" class="btn btn-danger" routerLink="/pagamentos-lista">
+                    <i class="fa fa-arrow-alt-circle-left"></i> Voltar
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

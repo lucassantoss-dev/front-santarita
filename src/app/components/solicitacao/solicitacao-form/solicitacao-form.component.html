@@ -1,0 +1,84 @@
+<h1 class="breadcrumb mt-4">Adicionar Novo Cliente</h1>
+
+<div class="container addClient">
+  <form (ngSubmit)="salvar()" [formGroup]="clienteForm">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Quadra: </mat-label>
+        <input
+          matInput
+          required
+        />
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Número: </mat-label>
+        <input
+          matInput
+          required
+        />
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Tipo: </mat-label>
+        <input
+          matInput
+          required
+        />
+      </mat-form-field>
+      <mat-label>Nome: </mat-label>
+      <input
+        matInput
+        required
+        formControlName="nome"
+        [(ngModel)]="cliente.nome"
+      />
+    </mat-form-field>
+    <div class="col-md-12">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>CPF: *</mat-label>
+        <input
+          matInput
+          required
+        />
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field appearance="fill">
+          <mat-label>CEP: *</mat-label>
+          <input
+            matInput
+            required
+            type="text"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="fill">
+          <mat-label>endereço: </mat-label>
+          <input
+            matInput
+            required
+            type="text"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <button
+          [disabled]="!clienteForm.valid"
+          type="submit"
+          class="btn btn-primary"
+        >
+          <i class="fa fa-save"></i> Salvar
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+        >
+          <i class="fa fa-arrow-alt-circle-left"></i> Voltar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

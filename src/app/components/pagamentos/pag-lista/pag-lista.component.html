@@ -1,0 +1,134 @@
+<h1 class="mt-4">Pagamentos</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item active">Consulta</li>
+</ol>
+
+<div class="container search-table">
+  <div class="search-box" [formGroup]="searchForm">
+    <div class="row">
+      <div class="col-md-9">
+        <input
+          type="text"
+          id="myInput"
+          class="form-control"
+          placeholder="Digite o nome do sócio"
+          formControlName="queryField"
+        />
+        <!-- <small
+          class="red-text"
+          *ngIf="
+            searchForm.get('queryField').invalid &&
+            searchForm.get('queryField').touched
+          "
+        >
+          Preencha o campo
+        </small> -->
+      </div>
+      <div class="button-row">
+        <div class="col-md-2">
+          <button
+            class="btn btn-danger"
+            [disabled]="!searchForm.get('queryField').valid"
+            (click)="onSearch()"
+          >
+            <i class="fa fa-search"></i>
+            Pesquisar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <button class="btn btn-warning" (click)="novoCadastro()">
+        <i class="fa fa-plus"></i>
+        Novo
+      </button>
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-condensed table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Endereco</th>
+            <th>CEP</th>
+            <th>Contato</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pagamentos of pagamentos">
+            <td>teste</td>
+            <td>teste</td>
+            <td>teste</td>
+            <td>teste</td>
+            <td>teste</td>
+            <td>teste</td>
+            <td>
+              <button
+                class="btn btn-primary"
+                routerLink="/pagamentos-form/{{ pagamentos.id }}"
+              >
+                <i class="fa fa-edit"></i>
+              </button>
+              <button
+                class="btn btn-danger"
+                data-bs-toggle="modal"
+                (click)="preparaDelecao(pagamento)"
+                data-bs-target="#exampleModal"
+              >
+                <i class="fa fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="modal fade" id="exampleModal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">
+                Exclusão de sócio
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body" *ngIf="pagamentoSelecionado !== null">
+              Confirma a deleção do(a) {{ pagamentoSelecionado.nome }}
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                (click)="deletarPagamento()"
+                class="btn btn-primary"
+                data-bs-dismiss="modal"
+              >
+                Deletar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

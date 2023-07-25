@@ -1,0 +1,12 @@
+.nav-link:hover {
+    background-color: #333;
+}
+
+a > i {
+    margin-right: 5px !important;
+}
+
+.logout {
+    background: none;
+    border: none;
+}

@@ -1,0 +1,183 @@
+<h1 class="breadcrumb mt-4">Adicionar Novo Sócio</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item active">
+    {{ cliente.id ? "Edição" : "Cadastro" }}
+  </li>
+</ol>
+
+<div class="container addClient">
+  <form (ngSubmit)="salvar()" [formGroup]="clienteForm">
+    <div class="row">
+      <div class="col-md-3">
+        <mat-form-field class="example-form w-100" appearance="fill">
+          <mat-label>Quadra:* </mat-label>
+          <mat-select
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="cliente.quadra"
+          >
+            <mat-option *ngFor="let quadra of quadra" [value]="quadra.nome">
+              {{ quadra.desc }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field class="example-form w-100" appearance="fill">
+          <mat-label>Complemento:* </mat-label>
+          <input
+            matInput
+            required
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="cliente.complemento"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Número: </mat-label>
+          <input matInput type="number" [ngModelOptions]="{ standalone: true }"
+          [(ngModel)]="cliente.numero" placeholder="0 a 700" required  />
+        </mat-form-field>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field class="example-form w-100" appearance="fill">
+          <mat-label>Tipo:* </mat-label>
+          <mat-select
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="cliente.tipo"
+          >
+            <mat-option *ngFor="let tipo of tipo" [value]="tipo.desc">
+              {{ tipo.desc }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Nome: </mat-label>
+          <input
+            matInput
+            required
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="cliente.nome"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>CPF: *</mat-label>
+          <input
+            matInput
+            required
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="cliente.cpf"
+            placeholder="000.000.000-00"
+            mask="000.000.000-00"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>CEP: *</mat-label>
+          <input
+            matInput
+            required
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="cliente.CEP"
+            placeholder="63700-000"
+            mask="00000-000"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Logradouro: </mat-label>
+          <input
+            matInput
+            required
+            type="text"
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="cliente.endereco"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Cidade: *</mat-label>
+          <input
+            matInput
+            required
+            type="text"
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="cliente.cidade"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Bairro: </mat-label>
+          <input
+            matInput
+            required
+            type="text"
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="cliente.bairro"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Estado: *</mat-label>
+          <input
+            matInput
+            required
+            type="text"
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="cliente.estado"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Contato: *</mat-label>
+          <input
+            matInput
+            required
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="cliente.contato"
+            placeholder="(88) 99999-9999"
+            mask="(00) 00000-0000"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          *ngIf="!cliente.id"
+        >
+          <i class="fa fa-save"></i> Salvar
+        </button>
+        <button type="submit" class="btn btn-primary" *ngIf="cliente.id">
+          <i class="fa fa-sync-alt"></i> Atualizar
+        </button>
+        <button type="button" class="btn btn-danger" routerLink="/cliente-lista">
+          <i class="fa fa-arrow-alt-circle-left"></i> Voltar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

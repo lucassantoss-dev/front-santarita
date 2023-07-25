@@ -1,0 +1,108 @@
+<h1 class="breadcrumb mt-4">Relatório mensal</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <mat-form-field appearance="fill">
+        <!-- #docregion toggle -->
+        <input matInput [matDatepicker]="picker" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <!-- #enddocregion toggle -->
+      </mat-form-field>
+      <label>à</label>
+      <mat-form-field appearance="fill">
+        <!-- #docregion toggle -->
+        <input matInput [matDatepicker]="picker2" />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="picker2"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+        <!-- #enddocregion toggle -->
+      </mat-form-field>
+      <button class="btn btn-success">Buscar</button>
+      <button (click)="gerarRelatocioClientes()" class="btn btn-danger">Relatório de Clientes</button>
+      <button (click)="gerarRelatocioPagamentos()" class="btn btn-danger">Relatório de Pagamentos</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12" id="content">
+      <table class="table table-condensed table-hover">
+        <thead>
+          <tr>
+            <th>Quadra</th>
+            <th>Número</th>
+            <th>Tipo</th>
+            <th>Nome</th>
+            <th>Endereco</th>
+            <th>CPF</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr >
+            <td>Teste</td>
+            <td>Teste</td>
+            <td>Teste</td>
+            <td>Teste</td>
+            <td>Teste</td>
+            <td>Teste</td>
+            <td>
+              <button
+                class="btn btn-primary"
+                routerLink="/clientes/form/"
+              >
+                <i class="fa fa-edit"></i>
+              </button>
+              <button
+                class="btn btn-danger"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+              >
+                <i class="fa fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="modal fade" id="exampleModal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">
+                Exclusão de cliente
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body" >
+              Confirma a deleção do(a) ?
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-bs-dismiss="modal"
+              >
+                Deletar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

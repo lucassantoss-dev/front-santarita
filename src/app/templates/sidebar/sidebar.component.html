@@ -1,0 +1,86 @@
+<div id="layoutSidenav_nav">
+    <nav
+      [style]="getColorSidenav()"
+      class="sb-sidenav accordion sb-sidenav-dark"
+      id="sidenavAccordion"
+    >
+      <div class="sb-sidenav-menu">
+        <div class="nav">
+          <div class="sb-sidenav-menu-heading">Painel do Cliente</div>
+          <a class="nav-link" routerLink="/cliente-lista"
+            ><div class="sb-nav-link-icon">
+              <i class="fas fa-user-plus"></i>
+            </div>
+            Sócio</a
+          >
+          <a class="nav-link" routerLink="/socios-lista"
+            ><div class="sb-nav-link-icon">
+              <i class="fas fa-handshake"></i>
+            </div>
+            Falecido</a
+          >
+          <a class="nav-link" routerLink="/pagamentos-lista"
+            ><div class="sb-nav-link-icon">
+              <i class="fas fa-money-check-alt"></i>
+            </div>
+            Pagamentos</a
+          >
+          <div (click)="openSuporte()">
+            <a class="nav-link" type="button">
+              <div class="sb-nav-link-icon">
+                <i class="fa fa-receipt"></i>
+              </div>
+              Relatórios
+              <div class="sb-nav-link-icon" *ngIf="!visibleProfile">
+                <i class="fa fa-arrow-down"></i>
+              </div>
+              <div class="sb-nav-link-icon" *ngIf="visibleProfile">
+                <i class="fa fa-arrow-up"></i>
+              </div>
+            </a>
+          </div>
+          <a
+            class="nav-link collapsed"
+            [routerLink]="['/rel', 'mensal']"
+            [style]="getBackgroundColorOnVisibleProfile()"
+            *ngIf="visibleProfile"
+          >
+            <div class="sb-nav-link-icon">
+              <i class="fas fa-file-invoice-dollar"></i>
+            </div>
+            Mensal</a
+          >
+          <a
+            class="nav-link collapsed"
+            [routerLink]="['/rel', 'controle-pagamento-socio']"
+            data-toggle="collapse"
+            data-target="#collapsePages"
+            aria-expanded="false"
+            aria-controls="collapsePages"
+            [style]="getBackgroundColorOnVisibleProfile()"
+            *ngIf="visibleProfile"
+          >
+            <div class="sb-nav-link-icon">
+              <i class="fas fa-dollar-sign"></i>
+            </div>
+            Controle Pagamento dos Sócios</a
+          >
+          <div class="sb-sidenav-menu-heading">Logout</div>
+  
+          <button
+            class="nav-link collapsed logout"
+            (click)="logout()"
+            data-toggle="collapse"
+            data-target="#collapseLayouts"
+            aria-expanded="false"
+            aria-controls="collapseLayouts"
+            ><div class="sb-nav-link-icon">
+              <i class="fas fa-sign-out-alt"></i>
+            </div>
+            Sair
+          </button>
+        </div>
+      </div>
+    </nav>
+  </div>
+  

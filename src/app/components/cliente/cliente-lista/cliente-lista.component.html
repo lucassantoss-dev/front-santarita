@@ -1,0 +1,112 @@
+<h1 class="mt-4">Sócios</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item active">Consulta</li>
+</ol>
+
+<mat-form-field appearance="standard">
+  <mat-label>Filtro</mat-label>
+  <input
+    matInput
+    (keyup)="applyFilter($event)"
+    placeholder="Ex. Lucas"
+    #input
+  />
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+    <!-- Position Column -->
+    <ng-container matColumnDef="quadra">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Quadra</th>
+      <td mat-cell *matCellDef="let row">{{ row.quadra.toUpperCase() }}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="numero">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Número</th>
+      <td mat-cell *matCellDef="let row">{{ row.numero }}</td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="tipo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</th>
+      <td mat-cell *matCellDef="let row">{{ row.tipo }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome</th>
+      <td mat-cell *matCellDef="let row">{{ row.nome }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="endereco">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Endereço</th>
+      <td mat-cell *matCellDef="let row">{{ row.endereco }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="acoes">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Acões</th>
+      <td mat-cell *matCellDef="let row">
+        <button class="btn btn-primary" routerLink="/cliente-form/{{ row.id }}">
+          <i class="fa fa-edit"></i>
+        </button>
+        <button
+          class="btn btn-danger"
+          (click)="preparaDelecao(row)"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          <i class="fa fa-trash"></i>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter</td>
+    </tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[15, 20, 25, 50]"
+    showFirstLastButtons
+    aria-label="Select page of periodic rows"
+  >
+  </mat-paginator>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Exclusão de cliente</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body" *ngIf="clienteSelecionado !== null">
+        Confirma a deleção do(a) {{ clienteSelecionado.nome }}?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+        <button
+          type="button"
+          (click)="deletarCliente()"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+        >
+          Deletar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
